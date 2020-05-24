@@ -16,7 +16,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1"
   },
-  "homepage": " https://zha97835.github.io/mui-pokedex",
+  "homepage": " https://muipokemon.com/mui-pokedex",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",

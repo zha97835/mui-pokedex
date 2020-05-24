@@ -18,9 +18,9 @@ import PokemonSnapCard from './PokemonSnapCard';
 
 const useStyles = makeStyles((theme) => ({
   pokedexContainer: {
-    paddingTop: "20px",
-    paddingLeft: "50px",
-    paddingRight: "50px",
+    paddingTop: "8px",
+    paddingLeft: "8px",
+    paddingRight: "8px",
   },
   cardMedia: {
     margin: "auto",
@@ -31,8 +31,8 @@ const useStyles = makeStyles((theme) => ({
   searchContainer: {
     display: "flex",
     backgroundColor: fade(theme.palette.common.white, 0.15),
-    paddingLeft: "20px",
-    paddingRight: "20px",
+    paddingLeft: "5px",
+    paddingRight: "5px",
     marginTop: "5px",
     marginBottom: "5px",
   },
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "5px",
   },
   searchInput: {
-    width: "200px",
+    width: "360px",
     margin: "5px",
   },
 }));
@@ -80,7 +80,7 @@ const Pokedex = (props) => {
     const { id, name, sprite } = pokemonData[pokemonId];
     return (
       <Grid item xs={6} sm={4} md={3} lg={2} key={pokemonId}>
-        <PokemonSnapCard id={id} name={name} sprite={sprite} history={history}/>
+        <PokemonSnapCard id={id} name={name} sprite={sprite} history={history}/>       
       </Grid>
     );
   };
@@ -89,19 +89,19 @@ const Pokedex = (props) => {
     <>
       <AppBar position="static">
         <Toolbar>
-          <div className={classes.searchContainer}>
-            <SearchIcon className={classes.searchIcon} />
-            <TextField
-              className={classes.searchInput}
-              onChange={handleSearchChange}
-              label="Pokemon"
-              variant="standard"
-            />
-          </div>
+          <Grid container className={classes.searchContainer} justify={'center'}>            
+              <SearchIcon className={classes.searchIcon} />
+              <TextField
+                className={classes.searchInput}
+                onChange={handleSearchChange}
+                label="Find Pokemon by name (按姓名查找宝可漫)"
+                variant="standard"
+              />
+          </Grid>
         </Toolbar>
       </AppBar>
       {pokemonData ? (
-        <Grid container spacing={2} className={classes.pokedexContainer}>
+        <Grid container spacing={1} className={classes.pokedexContainer}>
           {Object.keys(pokemonData).map(
             (pokemonId) =>
               pokemonData[pokemonId].name.includes(filter) &&

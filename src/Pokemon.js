@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useEffect, useState } from "react";
-import { Typography, CircularProgress, Button } from "@material-ui/core";
+import { Typography, CircularProgress, Button, Card } from "@material-ui/core";
 import axios from "axios";
 import PokemonDetailCard from './PokemonDetailCard';
 
@@ -26,24 +26,23 @@ const Pokemon = (props) => {
     const { name, id, species, height, weight, types, sprites} = pokemon;
     const fullImageUrl = `https://pokeres.bastionbot.org/images/pokemon/${id}.png`;
     const { front_default } = sprites;
-    return (
-      <PokemonDetailCard id={id} name={name} species={species} height={height} weight={weight} types={types} fullImageUrl={fullImageUrl} front_default={front_default} history={history}/>
-      // <PokemonDetailCard pokemon history={history} sprites/>
+    return (      
+      <PokemonDetailCard pokemon={pokemon} history={history}/>
     );
   };
 
   return (
-    <>
-      {pokemon === undefined && <CircularProgress />}
-      {pokemon !== undefined && pokemon && generatePokemonJSX(pokemon)}
-      {pokemon === false && <Typography> Pokemon not found</Typography>}
-
-      {pokemon !== undefined && (
-        <Button variant="contained" onClick={() => history.push("/")}>
-          back to pokedex
-        </Button>
-      )}
-    </>
+    // <Card item style={{maxWidth: '345px'}}>
+    <Card>
+        {pokemon === undefined && <CircularProgress />}
+        {pokemon !== undefined && pokemon && generatePokemonJSX(pokemon)}
+        {pokemon === false && <Typography> Pokemon not found</Typography>}
+        {/* {pokemon !== undefined && (
+          <Button variant="contained" onClick={() => history.push("/")}>
+            back to pokedex
+          </Button>
+        )}     */}
+    </Card>    
   );
 };
 

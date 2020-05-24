@@ -11,7 +11,7 @@ import toFirstCharUppercase from './constants';
 
 const useStyles = makeStyles((theme) => ({
     cardRoot:{
-        maxWidth: '345',
+        maxWidth: '300',
     },
     cardMedia: {
       margin: "auto",
@@ -29,7 +29,8 @@ const useStyles = makeStyles((theme) => ({
     const {id, name, history, sprite} = props;
     const classes = useStyles();
     return (
-        <Card className={classes.cardRoot} onClick={() => history.push(`/${id}`)}>
+        // <Card className={classes.cardRoot} onClick={() => history.push(`/${id}`)}>
+        <Card className={classes.cardRoot}>
             <CardActionArea>
                 <CardMedia
                     component="img"
@@ -37,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
                     title={name}                    
                     className={classes.cardMedia}
                     image={sprite}
-                    height="130"
                     style={{ width: "130px", height: "130px" }}
                 />
                 <CardContent className={classes.cardContent}>
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
                 </CardContent>
             </CardActionArea>
             <CardActions className={classes.cardAction}>
-                <Button variant="contained" size="small" color="secondary">
+                <Button variant="contained" size="small" color="primary" onClick={() => history.push(`/${id}`)}>
                     Show Details
                 </Button>
             </CardActions>
